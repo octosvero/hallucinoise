@@ -1,0 +1,18 @@
+div#div-bottom {
+    display: flex;
+    flex-direction: column;
+}
+
+div.entry {
+    /*display: flex;*/
+    /*flex-direction: row;*/
+    margin-bottom: 4px;
+}
+
+.value {
+    float: right;
+}
+
+p {
+    margin: 0px;
+}

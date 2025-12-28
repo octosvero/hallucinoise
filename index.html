@@ -4,21 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hallucinoise</title>
+    <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-    <canvas id="noise-canvas" width="640" height="480" style="image-rendering: pixelated;"></canvas>
-    <br>
-    <p>Canvas size (Width, Height):</p>
-    <input type="text" id="inp-canvaswidth" value="512"/>
-    <input type="text" id="inp-canvasheight" value="512"/>
-    <br>
-    <p>Canvas scale:</p>
-    <input type="text" id="inp-canvasscale" value="1.0"/>
-    <br>
-    <button id="btn-toggleanim">Pause</button>
-    <br>
-    <p>Refresh rate:</p>
-    <input type="text" id="inp-refreshrate" value="8"/>
+    <div id="div-top">
+        <canvas id="noise-canvas" width="640" height="480" style="image-rendering: pixelated;"></canvas>
+    </div>
+
+    <div id="div-bottom">
+        <div class="entry">
+            <button id="btn-toggleanim">Pause</button>
+        </div>
+
+        <div class="entry">
+            <span>Canvas size (Width, Height):</span>
+            <input class="value" type="text" id="inp-canvaswidth" value="512"/>
+            <input class="value" type="text" id="inp-canvasheight" value="512"/>
+        </div>
+
+        <div class="entry">
+            <span>Canvas scale:</span>
+            <input class="value" type="text" id="inp-canvasscale" value="1.0"/>
+        </div>
+
+        <div class="entry">
+            <span>Refresh rate:</span>
+            <input class="value" type="text" id="inp-refreshrate" value="8"/>
+        </div>
+    </div>
     <script src="index.js"></script>
 </body>
 </html>

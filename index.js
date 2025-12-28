@@ -4,6 +4,7 @@ const ctx = canvas.getContext("2d");
 const width = 512;
 const height = 512;
 
+let canvasScale = 1.0;
 let animEnabled = true;
 let targetRefreshRate = 8;
 let interval = 1000 / targetRefreshRate;
@@ -19,6 +20,28 @@ function linkInput(id, change) {
   const input = document.getElementById(id);
   input.onchange = (e) => { change(e, input); };
 }
+
+linkInput("inp-canvasscale", (e, t) => {
+    let num = Number(t.value);
+
+    if (typeof(num) !== "number") {
+        return;
+    } else if (isNaN(num)) {
+        return;
+    }
+
+    if (num <= 0) {
+        console.log(`someone dumb tried to scale canvas to ${num}`);
+        alert("Canvas scale should be >0");
+        return;
+    }
+
+    canvasScale = num;
+
+    // 640 and 480 are canvas CSS width and height
+    canvas.style.width = `${640 * num}px`;
+    canvas.style.height = `${480 * num}px`;
+});
 
 linkButton("btn-toggleanim", (e, t) => {
     animEnabled = !animEnabled;

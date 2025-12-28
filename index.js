@@ -4,6 +4,9 @@ const ctx = canvas.getContext("2d");
 let width = 512;
 let height = 512;
 
+canvas.width = width;
+canvas.height = height;
+
 let canvasScale = 1.0;
 let animEnabled = true;
 let targetRefreshRate = 8;
@@ -38,8 +41,12 @@ linkInput("inp-canvasscale", (e, t) => {
 
     canvasScale = num;
 
+    console.log(width, height);
+
     canvas.style.width = `${width * canvasScale}px`;
     canvas.style.height = `${height * canvasScale}px`;
+
+    console.log(canvas.style.width, canvas.style.height);
 });
 
 linkInput("inp-canvaswidth", (e, t) => {
@@ -58,7 +65,7 @@ linkInput("inp-canvaswidth", (e, t) => {
     }
 
     width = Math.trunc(num);
-    canvas.width = Math.trunc(num);
+    canvas.width = width;
 
     // Rescale canvas back
     canvas.style.width = `${width * canvasScale}px`;
@@ -81,11 +88,11 @@ linkInput("inp-canvasheight", (e, t) => {
     }
 
     height = Math.trunc(num);
-    canvas.height = Math.trunc(num);
+    canvas.height = height;
 
     // Rescale canvas back
-    canvas.style.width = `${canvas.width * canvasScale}px`;
-    canvas.style.height = `${canvas.height * canvasScale}px`;
+    canvas.style.width = `${width * canvasScale}px`;
+    canvas.style.height = `${height * canvasScale}px`;
 });
 
 linkButton("btn-toggleanim", (e, t) => {

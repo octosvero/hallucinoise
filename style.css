@@ -1,6 +1,8 @@
 div#div-bottom {
     display: flex;
     flex-direction: column;
+
+    max-width: 50em;
 }
 
 div.entry {

@@ -1,8 +1,8 @@
 const canvas = document.getElementById("noise-canvas");
 const ctx = canvas.getContext("2d");
 
-const width = 512;
-const height = 512;
+let width = 512;
+let height = 512;
 
 let canvasScale = 1.0;
 let animEnabled = true;
@@ -38,9 +38,54 @@ linkInput("inp-canvasscale", (e, t) => {
 
     canvasScale = num;
 
-    // 640 and 480 are canvas CSS width and height
-    canvas.style.width = `${640 * num}px`;
-    canvas.style.height = `${480 * num}px`;
+    canvas.style.width = `${width * canvasScale}px`;
+    canvas.style.height = `${height * canvasScale}px`;
+});
+
+linkInput("inp-canvaswidth", (e, t) => {
+    let num = Number(t.value);
+
+    if (typeof(num) !== "number") {
+        return;
+    } else if (isNaN(num)) {
+        return;
+    }
+
+    if (num < 1) {
+        console.log(`someone dumb tried to set canvas width to ${num}`);
+        alert("Canvas width should be >=1");
+        return;
+    }
+
+    width = Math.trunc(num);
+    canvas.width = Math.trunc(num);
+
+    // Rescale canvas back
+    canvas.style.width = `${width * canvasScale}px`;
+    canvas.style.height = `${height * canvasScale}px`;
+});
+
+linkInput("inp-canvasheight", (e, t) => {
+    let num = Number(t.value);
+
+    if (typeof(num) !== "number") {
+        return;
+    } else if (isNaN(num)) {
+        return;
+    }
+
+    if (num < 1) {
+        console.log(`someone dumb tried to set canvas height to ${num}`);
+        alert("Canvas height should be >=1");
+        return;
+    }
+
+    height = Math.trunc(num);
+    canvas.height = Math.trunc(num);
+
+    // Rescale canvas back
+    canvas.style.width = `${canvas.width * canvasScale}px`;
+    canvas.style.height = `${canvas.height * canvasScale}px`;
 });
 
 linkButton("btn-toggleanim", (e, t) => {
